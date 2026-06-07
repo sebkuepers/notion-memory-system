@@ -170,8 +170,22 @@ Daily Log ──> People / Projects
 Because the API can't query *through* a view, views are for the **human** reader; the AI uses
 search/relations. Built per store: Decisions *Active* / *By Scope*; Knowledge *Current by Type*;
 Strategy & Goals *Active by Horizon*; Tasks *Board*; Inbox *Unprocessed* / *By Type*; Daily Log
-*Recent*; Preferences *By Area*; Projects *Active*; Ventures *By Status*; Library *By Kind*. The
-hub also carries two linked cockpit views: *Active decisions* and *Inbox · to distill*.
+*Recent*; Preferences *By Area*; Projects *Active*; Ventures *By Status* / *Gallery*; Library
+*By Kind* / *Gallery*; Decisions *List*.
+
+## Presentation layer (humans don't land on tables)
+
+The dual-reader promise on the *human* side: people navigate **curated pages that embed views**, not
+raw tables. Built:
+- **Hub = dashboard.** The 🧠 Memory OS hub leads with a callout + Top of Mind/Profile, then four
+  embedded cockpit views — **Active decisions** (list), **Inbox · to distill** (queue), **Ventures**
+  (gallery of cards with one-liners), **Tasks** (board). The raw databases were moved into a child
+  **⚙️ Engine room** page, so the lobby is clean.
+- **Venture pages are briefings.** Each venture row has a narrative body + a one-liner shown on its
+  gallery card; its linked decisions/knowledge/tasks surface via the row's relation properties.
+- **Human-friendly view types** (gallery / board / list) are the entry on the stores; tables are a
+  secondary "data" view, kept in the Engine room.
+- The databases are unchanged underneath — the AI queries the exact same structure.
 
 ## Curation / trust signal
 
