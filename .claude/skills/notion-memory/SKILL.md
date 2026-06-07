@@ -2,103 +2,103 @@
 name: notion-memory
 description: >-
   Operating protocol for Sebastian's Notion "Memory OS" — the canonical long-term memory.
-  Use at the start of any work session, and whenever recalling context about Sebastian, his
-  ventures (Ongiini, Sokosumi, Masumi, CIF, Plan.Net, Personal Brand), decisions, people,
-  preferences, or knowledge — and whenever durable information worth remembering is produced.
+  Use at the start of any work session; whenever recalling context about Sebastian, his ventures
+  (Ongiini, Sokosumi, Masumi, CIF, Plan.Net, Personal Brand), decisions, people, preferences, or
+  knowledge; whenever durable information worth remembering is produced; and to INGEST a
+  conversation history or document dump into the memory system.
 ---
 
 # Notion Memory OS — operating protocol
 
-> **DRAFT.** The protocol page URL and data-source IDs are filled in after the Notion build phase.
-> This is written in **capability terms** ("fetch the page titled X", "create a row in Decisions")
-> rather than tool names, so it maps cleanly across connectors (Claude, ChatGPT, Mistral, REST).
+Notion is Sebastian's **canonical** long-term memory. This platform's native memory is a
+scratchpad — when they disagree, **Notion wins.** Own the memory, rent the intelligence.
 
-Notion is Sebastian's **canonical** memory. This platform's native memory is a scratchpad — when
-they disagree, **Notion wins.** Own the memory, rent the intelligence.
+Written in **capability terms** ("fetch the page titled X", "create a row in Decisions") so it maps
+across connectors (Claude Code, Claude.ai, ChatGPT, Mistral, REST). The same protocol is published
+in Notion at **🧠 Memory OS → 📖 Operating Protocol**
+(https://app.notion.com/p/378685b37645810f85d3e9150df56372) — that page is the single source of truth.
+
+## The structure (what lives where)
+
+Hub: **🧠 Memory OS**. Always-loaded pages: **Top of Mind**, **Profile**. Stores:
+**Preferences** · **Decisions** · **Knowledge** · **Strategy & Goals** · **People** (CRM) ·
+**Ventures** · **Projects** · **Agents** · **Daily Log** · **Inbox** · **Tasks** · **Library**.
+Backbone ontology (the five context types): **Strategic / Relationship / Knowledge / Process /
+Decision**.
 
 ## At the start of work — ALWAYS
 
-1. **Fetch `📌 Top of Mind`** (a page) and **`👤 Profile`** (a page). These are policy-loaded: load
-   them every session without being asked. They carry current priorities, per-venture status,
-   working preferences, and hard constraints.
-
-That is the only mandatory load. Everything else is fetched on demand for the task at hand.
+**Fetch `📌 Top of Mind` and `👤 Profile` first**, every session, without being asked. They carry
+current priorities, per-venture status, working preferences, and hard constraints.
 
 ## Reading for a task
 
-Pick the path that fits the client:
-
-- **Conversational clients (Claude / ChatGPT / Mistral):** run a **semantic search** scoped to the
-  relevant store, then fetch the promising rows by id. Search is fuzzy — phrase queries the way the
-  stored *statement-titles* read.
-- **Programmatic / agent fleet:** run a **structured query** (REST `data_sources/query`) filtered by
-  the real properties — `Venture`, `Type`, `Status`. This is the deterministic path.
-- **Either:** follow **relations 1–2 hops** — e.g. open a Venture or Project and read the Decisions,
-  Knowledge, Goals and Tasks linked beneath it.
-
-Which store for what:
+- **Conversational clients (Claude.ai / ChatGPT / Mistral):** semantic-search the relevant store,
+  then fetch promising rows. Phrase queries the way the *statement-titles* read.
+- **Programmatic / fleet:** structured query (REST `data_sources/query`) filtered by `Venture` /
+  `Type` / `Status` — the deterministic path.
+- **Either:** follow relations 1–2 hops (a Venture or Project → its Decisions / Knowledge / Goals /
+  Tasks). Prefer **`Status = Active` / `Current`** rows; superseded ones are audit trail, not truth.
 
 | You need… | Store |
 |---|---|
-| how Sebastian wants you to behave | **Preferences** (+ Top of Mind / Profile) |
-| why something was decided | **Decisions** (filter `Status = Active`) |
-| a lesson / playbook / how-he-works | **Knowledge** |
-| goals / strategy / priorities | **Strategy & Goals** |
-| a person and how to engage them | **People** (CRM) |
-| the brief on a venture / project | **Ventures** / **Projects** |
-| an agent's role/scope | **Agents** |
-| what happened recently | **Daily Log** |
-| open todos | **Tasks** |
-| long-form essays / whitepaper | **Library** (only when explicitly needed) |
-
-Always prefer **`Status = Active` / `Current`** rows. Superseded/Outdated/Reversed rows exist for the
-audit trail — don't treat them as current truth.
+| how Sebastian wants you to behave | Preferences (+ Top of Mind / Profile) |
+| why something was decided | Decisions (`Status = Active`) |
+| a lesson / playbook / how-he-works | Knowledge |
+| goals / strategy / priorities | Strategy & Goals |
+| a person | People (CRM) |
+| a venture / project brief | Ventures / Projects |
+| an agent's role | Agents |
+| what happened recently | Daily Log |
+| open todos | Tasks |
+| long-form essays / whitepaper | Library (only when asked) |
 
 ## Writing to memory
 
 Write only **durable, reusable** information. **Never** write secrets, credentials, or tokens.
 
-Before creating anything:
-1. **Propose the write** and get Sebastian's confirmation. Do not silently auto-write to the clean
-   stores (Decisions / Knowledge / Strategy & Goals / Preferences).
-2. **Dedup first.** Search the target store for a near-duplicate. If one exists, **update or
-   supersede** it rather than create a second row.
-3. Write to the **correct store** with the **exact title and property rules** below.
-4. On contradiction, **supersede — don't delete:** flip the old row's `Status`
+1. **Propose, then confirm** before writing to the clean stores (Decisions / Knowledge / Strategy &
+   Goals / Preferences). Don't silently auto-write.
+2. **Dedup first** — search the target store; if a near-duplicate exists, update or supersede it
+   instead of creating a second row.
+3. Write to the **correct store** with a **statement-title** and required properties
+   (`Scope` / `Venture` / `Status`).
+4. **Supersede, don't delete** — on contradiction, flip the old row's `Status`
    (Superseded / Outdated / Reversed) and link the replacement.
 
-Frictionless capture is the exception: raw notes and the Claude memory dump go straight into
-**`📥 Inbox`** (or **`Daily Log`**) with no ceremony, to be distilled later.
+Raw, frictionless capture is the exception: notes and dumps go straight to **📥 Inbox** (or
+**Daily Log**), to be distilled later.
 
 ### The one rule that makes recall work
 **Every title is a full statement, not a label.**
 ✅ *"Human review is Ongiini's trust layer, not a bottleneck"* ❌ *"Trust"*
-This serves both phone-scanning and AI retrieval more than anything else.
 
 ### Write template — a Decision
 ```
-Title:  <full statement of the decision>
-Scope:  Global | Venture | Agent
-Status: Active
-Decision Date: <today>
-Venture/Project/People: <relations, as relevant>
-Body:
-  - Decision: …
-  - Rationale: …
-  - Alternative considered: …
-  - Outcome / review date: …
+Title:  <full statement>      Scope: Global|Venture|Agent      Status: Active
+Decision Date: <today>        Venture/Project/People: <relations as relevant>
+Body: Decision / Rationale / Alternative considered / Outcome or review date
 ```
-Other stores follow the same spirit: statement-title, set `Scope`/`Venture`/`Status`, put the prose
-in the body. See `schema/` for each store's exact properties.
 
-## Distill (the weekly discipline)
+## Ingesting a conversation history or bulk dump
 
-Turn raw capture into clean memory: review each unprocessed `Inbox` / `Daily Log` item → classify it
-by the five context types → dedup → supersede where it contradicts → write an atomic row to the right
-store with a statement-title and properties → check `Processed`. Never auto-write into the clean
-stores without Sebastian's review.
+When Sebastian says "mine this / dump everything from here into the memory":
 
-## The five context types (Sebastian's ontology — reuse, don't reinvent)
+1. **Don't paste everything into one window.** Work in **batches** (a topic, a date range, or a
+   chat at a time) so nothing is truncated.
+2. **Capture raw first.** For each batch, write atomic raw items into **📥 Inbox**, one row per
+   idea, titled as a full statement, with a `Guess Type` (the five context types) and the detail in
+   the page body. Speed over polish here.
+3. **Distill in a reviewed pass.** Turn each unprocessed Inbox item into a clean row in the right
+   store: classify, **dedup** against what's already there, **supersede** contradictions, set
+   `Scope`/`Venture`/`Status`. Present the proposed rows to Sebastian for approval before they land
+   in the clean stores; then tick `Processed`.
+4. **Separate fact from inference.** Only write what's supported. Mark anything inferred
+   "_(inferred — confirm)_" in the body rather than asserting it.
+5. **Update the always-loaded pages.** If the dump changes current priorities, per-venture status,
+   or a stable fact, reflect it in **Top of Mind** / **Profile**.
+6. **Never** carry secrets, credentials, or tokens across.
 
+## The five context types (reuse, don't reinvent)
 **Strategic** (vision/goals/principles) · **Relationship** (people) · **Knowledge** (lessons,
 findings) · **Process** (how he works) · **Decision** (choices + rationale + outcome).
