@@ -165,8 +165,24 @@ Daily Log ──> People / Projects
   auto-write straight into the clean stores without that review gate.
 - `Processed` closes the loop so nothing is distilled twice.
 
+## Views (the human-facing retrieval layer)
+
+Because the API can't query *through* a view, views are for the **human** reader; the AI uses
+search/relations. Built per store: Decisions *Active* / *By Scope*; Knowledge *Current by Type*;
+Strategy & Goals *Active by Horizon*; Tasks *Board*; Inbox *Unprocessed* / *By Type*; Daily Log
+*Recent*; Preferences *By Area*; Projects *Active*; Ventures *By Status*; Library *By Kind*. The
+hub also carries two linked cockpit views: *Active decisions* and *Inbox · to distill*.
+
+## Curation / trust signal
+
+Each clean store (Decisions, Knowledge, Strategy & Goals, Preferences) has an **`Added by`**
+select (Sebastian / Claude / ChatGPT / Mistral / Agent) so AI-written rows are reviewable — the
+seeded rows are marked `Claude`. During distill, mark a reviewed row **verified** (Notion's page
+verification, with an expiry) as the human trust gate.
+
 ## What's intentionally deferred
 
-CRM/brand-hub de-duplication (the workspace has parallels — see `workspace-map.md`), the
-`bootstrap/` per-client adapters (need the live protocol-page URL), and the actual Notion build +
-dump ingestion. All are next-phase, not part of this design round.
+Merging the legacy Brand Strategy hub into Slow Intelligence OS; real Top of Mind / Profile content
+and venture/agent detail (need Sebastian); the big Claude-memory dump; database **templates** to
+enforce the Decision/Knowledge body structure (the hosted MCP can't create templates — a one-time
+Notion-UI step).

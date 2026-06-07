@@ -98,3 +98,13 @@ The structure now exists in Notion. Hub page **🧠 Memory OS** =
 - Seeded 5 founding **Decisions** (this project's real decisions).
 - **Untouched:** all `CRM - *` databases, the duplicate `Contacts`/`CRM - Projects`, and
   `Test Database` (the CRM cluster belongs to the separate email-automation project).
+
+### Improvements (2026-06-07, round 2)
+- **13 curated views** added across the stores (e.g. Decisions *Active* / *By Scope*, Inbox
+  *Unprocessed*, Tasks *Board*, Knowledge *Current by Type*), plus two linked cockpit views on the
+  hub. Views are human-facing only (the API can't query through them).
+- **`Added by`** select (Sebastian / Claude / ChatGPT / Mistral / Agent) added to Decisions,
+  Knowledge, Strategy & Goals, Preferences; all seeded rows marked `Claude`.
+- Hub title fixed (single 🧠) and stale protocol text updated to point at the live Operating
+  Protocol page.
+- **Still manual:** database templates (MCP can't create them); merging the legacy brand hub.
