@@ -173,19 +173,23 @@ Strategy & Goals *Active by Horizon*; Tasks *Board*; Inbox *Unprocessed* / *By T
 *Recent*; Preferences *By Area*; Projects *Active*; Ventures *By Status* / *Gallery*; Library
 *By Kind* / *Gallery*; Decisions *List*.
 
-## Presentation layer (humans don't land on tables)
+## Presentation layer — a navigable page-tree (humans) over databases (AI)
 
-The dual-reader promise on the *human* side: people navigate **curated pages that embed views**, not
-raw tables. Built:
-- **Hub = dashboard.** The 🧠 Memory OS hub leads with a callout + Top of Mind/Profile, then four
-  embedded cockpit views — **Active decisions** (list), **Inbox · to distill** (queue), **Ventures**
-  (gallery of cards with one-liners), **Tasks** (board). The raw databases were moved into a child
-  **⚙️ Engine room** page, so the lobby is clean.
-- **Venture pages are briefings.** Each venture row has a narrative body + a one-liner shown on its
-  gallery card; its linked decisions/knowledge/tasks surface via the row's relation properties.
-- **Human-friendly view types** (gallery / board / list) are the entry on the stores; tables are a
-  secondary "data" view, kept in the Engine room.
+Humans navigate a **tree of pages**; the AI queries the databases. Structure:
+- **Home** — designed command center: cover + icon, welcome callout, section nav links, and the
+  embedded cockpit (active decisions · inbox-to-distill · tasks).
+- **Section hubs** — *Ventures*, *Knowledge & Decisions*, *Me*, *Capture & Do*, *Library* — each
+  with a cover/icon, a narrative intro, and the relevant embedded **views** (gallery, board, list,
+  **calendar**). Venture rows are brief pages with covers/icons; their related rows surface via
+  relation properties.
+- **Engine room** holds the raw databases (the AI backend); the hubs embed *filtered views* of them.
 - The databases are unchanged underneath — the AI queries the exact same structure.
+
+**Hard division (verified against the API):** buildable programmatically = page-tree, covers/icons,
+every view type, embedded linked views, page bodies. **NOT** buildable = columns, toggles, buttons,
+synced blocks, default-view, block/view reorder, teamspaces — these are a one-time manual UI pass.
+See [`ui-finishing-checklist.md`](./ui-finishing-checklist.md). The Notion API is for *data*, not
+*visual layout*.
 
 ## Curation / trust signal
 
