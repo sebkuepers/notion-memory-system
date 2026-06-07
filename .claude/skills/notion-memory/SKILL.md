@@ -102,3 +102,44 @@ When Sebastian says "mine this / dump everything from here into the memory":
 ## The five context types (reuse, don't reinvent)
 **Strategic** (vision/goals/principles) · **Relationship** (people) · **Knowledge** (lessons,
 findings) · **Process** (how he works) · **Decision** (choices + rationale + outcome).
+
+## Quick reference — live IDs, schema, worked example
+
+Open these by URL; don't rely on search alone. On every write to a clean store, set **`Added by`**
+to your platform (`Claude` / `Mistral` / `ChatGPT` / `Agent`). **If you can only read (no write
+access), append the item to Inbox or tell Sebastian — never silently drop it.**
+
+**Always-load pages:** Top of Mind `…81eda8ffece71d4cb781` · Profile `…815e9d6affa1ce7035ca` ·
+Operating Protocol `…810f85d3e9150df56372` (prefix all with `https://app.notion.com/p/378685b376458`).
+
+**Stores (full URLs):**
+Decisions `https://app.notion.com/p/b568bd8c70534bfebc59f2b68352f0aa` · Knowledge
+`https://app.notion.com/p/9a014ff12e9c4a93ad1d5c9792c0baf7` · Strategy & Goals
+`https://app.notion.com/p/6f68dd722c074894bee05a92bbc18326` · Preferences
+`https://app.notion.com/p/d835dbdabaed4b5181669747462d6b43` · Inbox
+`https://app.notion.com/p/f8a50198abe04bb1bd93bb577bbd3602` · Tasks
+`https://app.notion.com/p/0dc2c16eb87b40f88f5a4d4536a6aa0c` · Ventures
+`https://app.notion.com/p/8feb6e4ef033431290d00d1751302816` · Agents
+`https://app.notion.com/p/828042582f574567b08dd107f4085b75` · Projects
+`https://app.notion.com/p/da4411a0f7aa422c95440cb96e25e7ba` · People
+`https://app.notion.com/p/191604fb680a4c98b4fe1f82c94414cf` · Library
+`https://app.notion.com/p/d56a780f0a5b47a39be49f70a39125a9` · Daily Log
+`https://app.notion.com/p/0b5c8a5e01474995866ae483e2a21d20`.
+
+**Property cheat-sheet (exact names — `(rel)` = relation, body = page content):**
+- **Decisions:** `Decision`(title) · `Scope`[Global|Venture|Agent] · `Status`[Active|Superseded|Reversed] · `Decision Date` · `Venture`(rel) · `Project`(rel) · `People`(rel) · `Supersedes`(rel) · `Added by`. Body: Decision / Rationale / Alternative / Outcome.
+- **Knowledge:** `Insight`(title) · `Type`[Knowledge|Process] · `Scope` · `Status`[Current|Outdated] · `Venture`(rel) · `Project`(rel) · `Source` · `Captured` · `Added by`.
+- **Strategy & Goals:** `Objective`(title) · `Horizon`[Now|Quarter|Year|Long-term] · `Status`[Active|Achieved|Dropped] · `Venture`(rel) · `Metric` · `Review Date` · `Added by`.
+- **Preferences:** `Preference`(title) · `Area`[Communication|Formatting|Tooling|Working Style|Boundaries|Values] · `Scope` · `Status`[Active|Retired] · `Added by`.
+- **Inbox:** `Note`(title) · `Captured` · `Processed`(checkbox) · `Guess Type`[Strategic|Relationship|Knowledge|Process|Decision].
+- **Tasks:** `Task`(title) · `Status`[Todo|Doing|Done|Dropped] · `Due` · `Priority`[High|Medium|Low] · `Project`(rel) · `Venture`(rel).
+
+**Setting a `Venture` (relation):** pass the venture's page URL. Ongiini
+`…04ba07e548f9843b1c` · Sokosumi `…91a11ec8e35c2aad6f` · Masumi `…abba3beef4e27801db` · CIF
+`…b8bc58f9f08e090f8a` · Plan.Net `…2d92c2cbdc183e6ea8` · Personal Brand `…90a97bd50988080cb3` ·
+Personal `…53b4f5d4497ab74dc8` (prefix all with `https://app.notion.com/p/378685b376458`).
+
+**Worked example — capture a decision.** Create a row in Decisions with `Decision` = the full
+statement, `Scope` = Venture, `Venture` = the Ongiini URL, `Status` = Active, `Decision Date` =
+today, `Added by` = your platform; put Decision / Rationale / Alternative / Outcome in the body.
+*Before creating, search Decisions for a near-duplicate; if found, update or supersede instead.*
