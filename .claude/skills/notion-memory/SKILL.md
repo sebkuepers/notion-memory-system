@@ -143,3 +143,38 @@ Personal `…53b4f5d4497ab74dc8` (prefix all with `https://app.notion.com/p/3786
 statement, `Scope` = Venture, `Venture` = the Ongiini URL, `Status` = Active, `Decision Date` =
 today, `Added by` = your platform; put Decision / Rationale / Alternative / Outcome in the body.
 *Before creating, search Decisions for a near-duplicate; if found, update or supersede instead.*
+
+## Using the hosted Notion MCP (exact tool mechanics)
+
+All three clients (Claude, Mistral, ChatGPT) use the same hosted Notion server, so these patterns
+are identical everywhere. Follow them literally — they're where weaker models usually slip.
+
+- **Read a known page** (Top of Mind, Profile, a store): call **`fetch`** with the URL from the
+  Quick Reference. Don't search for something you already have the URL for.
+- **Recall something:** call **`search`** with `query_type: "internal"`, scoped to one store via
+  `data_source_url: "collection://<id>"`, `page_size` 5–10. Search is *semantic* — phrase the query
+  like the statement-title you expect. Then **`fetch`** the result's `id` for the full body.
+- **Unsure of a store's fields?** `fetch` the store URL and read the exact property names + select
+  options. Don't guess them.
+- **Create a row:** call **`create-pages`** with:
+  - `parent`: `{ "data_source_id": "<collection id>" }` (the data_source_id, *not* the database URL).
+  - `properties`: a JSON map with **exact** names. Gotchas:
+    - **Title** → the store's title column name (`Decision`, `Insight`, `Note`…), not `"title"`.
+    - **Select** → the option name as a string: `"Scope": "Venture"`.
+    - **Date** → expanded key: `"date:Decision Date:start": "2026-06-07"`.
+    - **Checkbox** → `"__YES__"` / `"__NO__"`: `"Processed": "__NO__"`.
+    - **Relation** (Venture/Project/People) → a JSON-array-of-URLs *string*:
+      `"Venture": "[\"https://app.notion.com/p/<venture-id>\"]"`.
+  - `content`: the page **body** in Notion markdown (rationale, detail) — never put the body in a property.
+- **Update / mark / supersede:** call **`update-page`** — `command: "update_properties"` to change a
+  field (e.g. `"Status": "Superseded"`, or `"Processed": "__YES__"` after distilling an Inbox row);
+  `command: "insert_content"` to add to the body. To supersede: set the old row's `Status`, then set
+  the new row's `Supersedes` relation to the old row's URL.
+
+**Reliability (matters most for weaker models):**
+- For known pages, **fetch by URL beats search** — it's deterministic.
+- A row you just created **isn't searchable for a short while** (indexing lag). Don't re-search to
+  confirm — trust the `id` returned by `create-pages`.
+- Do **one operation at a time** and read the returned `id`/result before the next step.
+- If a write is rejected, `fetch` the store and copy the exact property names/options — don't guess.
+- Never put secrets, tokens, or credentials in any field.
