@@ -26,16 +26,17 @@ in the next phase (via `notion-create-database` / `notion-update-data-source`).
 
 ## Relation placeholders
 
-Relations need the **target data-source ID**, which only exists once a database is created. Until
-then, targets are written as placeholder tokens. Fill them in at build time:
+Relations need the **target data-source ID**. These were placeholder tokens at design time; the
+structure has since been **built**, so the real IDs are below (full registry in
+`../docs/workspace-map.md`):
 
-| Token | Resolves to |
+| Token | Resolved data_source_id |
 |---|---|
-| `{{VENTURES_DS}}` | the new Ventures data source |
-| `{{PROJECTS_DS}}` | existing `Projects` = `bfd7a1a5-a4f3-4a15-b5d8-42261ff89336` |
-| `{{PEOPLE_DS}}` | existing `CRM - Contacts` = `3a0b4200-0c34-491d-86dc-86de07c4916c` |
-| `{{AGENTS_DS}}` | the new Agents data source |
-| `{{DECISIONS_DS}}` | the new Decisions data source (for its self-relation) |
+| `{{VENTURES_DS}}` | `011042db-7bea-43bb-bf24-cf2b1a30e4eb` |
+| `{{PROJECTS_DS}}` | `bfd7a1a5-a4f3-4a15-b5d8-42261ff89336` (existing `Projects`) |
+| `{{PEOPLE_DS}}` | `3a0b4200-0c34-491d-86dc-86de07c4916c` (existing `CRM - Contacts`) |
+| `{{AGENTS_DS}}` | `bb4dd864-6c29-4736-97d4-6c87531c3311` |
+| `{{DECISIONS_DS}}` | `7e287ca4-e86b-4e04-92b8-1b9fa11f6739` (for its self-relation) |
 
 ## Build order (relations require their targets to exist first)
 

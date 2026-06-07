@@ -65,3 +65,36 @@ future consolidation pass (pick one canonical brand hub; merge/retire duplicate 
 | Ontology (the five types) | reuse verbatim from `Context & Sparring` |
 | Ventures / Decisions / Knowledge / Strategy & Goals / Agents / Daily Log / Inbox / Tasks / Library / Preferences | **create new** (see `schema/`) |
 | Everything CRM-* / duplicates / Test DB | leave alone (deferred cleanup) |
+
+## Built — Memory OS live IDs (2026-06-07)
+
+The structure now exists in Notion. Hub page **🧠 Memory OS** =
+`378685b3-7645-81e2-930d-dfde370ad96e`. Tier-0 pages: **Top of Mind** =
+`378685b3-7645-81ed-a8ff-ece71d4cb781`, **Profile** = `378685b3-7645-815e-9d6a-ffa1ce7035ca`.
+
+| Database | data_source_id |
+|---|---|
+| Ventures | `011042db-7bea-43bb-bf24-cf2b1a30e4eb` |
+| Agents | `bb4dd864-6c29-4736-97d4-6c87531c3311` |
+| Decisions | `7e287ca4-e86b-4e04-92b8-1b9fa11f6739` |
+| Knowledge | `3f9c9f5e-e2aa-4bae-be5c-b86582ab99a1` |
+| Strategy & Goals | `e8e60f8a-7490-40b6-863f-c0400629c607` |
+| Daily Log | `e85d2058-08be-48cc-8f80-4e526892583a` |
+| Inbox | `2e3ebece-75ee-40e7-861a-91de6f1b59a0` |
+| Tasks | `10838e80-c637-476b-83a8-0c8ae4aacfdc` |
+| Preferences | `a474ffb6-2e96-4775-9017-e3aba307cb6e` |
+| Library | `333f5f64-a28d-4f9d-9540-3a7d561ae81e` |
+| Projects (extended, reused) | `bfd7a1a5-a4f3-4a15-b5d8-42261ff89336` |
+| People (CRM - Contacts, reused) | `3a0b4200-0c34-491d-86dc-86de07c4916c` |
+
+### Consolidation performed (all reversible — nothing deleted)
+- Moved under the **Personal Brand** venture page (`378685b3-7645-8190-a97b-d50988080cb3`):
+  `Slow Intelligence OS`, `Sebastian Küpers Brand Strategy` (+ its TOC), `Personal Brand - Pilot
+  Project`, `Vibe + Studio System`.
+- `Slow Intelligence OS` designated **canonical**; the older `Brand Strategy` hub got a "legacy"
+  callout at its top (content left intact for a manual merge during distill).
+- Catalogued 7 long-form pieces (whitepaper, philosophy, flywheel, 5 scenarios, Context & Sparring,
+  manifesto, rituals) into **Library**, each linked + tagged `Venture = Personal Brand`.
+- Seeded 5 founding **Decisions** (this project's real decisions).
+- **Untouched:** all `CRM - *` databases, the duplicate `Contacts`/`CRM - Projects`, and
+  `Test Database` (the CRM cluster belongs to the separate email-automation project).

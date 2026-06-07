@@ -11,16 +11,18 @@ and written by a human (the Notion app on phone/desktop) *and* by multiple LLM c
 
 ## Status
 
-**Design phase — this repo currently contains the design + schema only. Nothing has been created
-in Notion yet.** The SQL DDL in [`schema/`](./schema) is execution-ready: the same files build the
-workspace in the next phase.
+**Built.** The Memory OS now exists in Notion — 11 databases under the 🧠 Memory OS hub with
+relations wired, Ventures (7) / Agents (5) / Top of Mind / Profile seeded, and the existing
+personal-brand / Slow Intelligence content consolidated under the **Personal Brand** venture.
+Live data-source IDs are recorded in [`docs/workspace-map.md`](./docs/workspace-map.md).
 
 | Phase | What | State |
 |---|---|---|
-| 1. Ground & design | map the live workspace, verify Notion's real capabilities, design the full IA, write it as schema-as-code | ✅ this repo |
-| 2. Build | execute the DDL in Notion, wire relations, seed Top of Mind / Profile / Ventures / Agents | ⬜ next |
-| 3. Ingest | dump existing Claude memory into `Inbox`, run the first distill pass | ⬜ |
-| 4. Wire clients | `bootstrap/` adapters for Claude / ChatGPT / Mistral; publish the protocol page | ⬜ |
+| 1. Ground & design | map the live workspace, verify Notion's real capabilities, design the full IA, write it as schema-as-code | ✅ |
+| 2. Build | execute the DDL in Notion, wire relations, seed Ventures / Agents / Top of Mind / Profile | ✅ |
+| 3. Consolidate | move personal-brand / Slow Intelligence content under the Personal Brand venture; catalog long-form into Library | ✅ |
+| 4. Ingest | dump existing Claude memory into `Inbox`, run the first distill pass | ⬜ next |
+| 5. Wire clients | `bootstrap/` adapters for Claude / ChatGPT / Mistral; publish the protocol page | ⬜ |
 
 ## Three hard design constraints (do not violate)
 
