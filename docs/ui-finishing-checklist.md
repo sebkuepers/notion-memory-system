@@ -23,8 +23,9 @@ The API can't create columns, so the embedded views currently stack vertically. 
 
 ## 4. Default views
 For each database (in **⚙️ Engine room**), set the human-friendly view as **default** and drag it to
-first: Ventures → **Gallery**, Tasks → **Board**, Library → **Gallery**, Inbox → **Unprocessed**,
-Daily Log → **Calendar**, Decisions → **Active/List**. (View tab → ⋯ → *Set as default* / drag tab.)
+first: Ventures → **Gallery**, Tasks → **Today** (or Board), Weekly Goals → **This week**, Library →
+**Gallery**, Inbox → **Unprocessed**, Daily Log → **Calendar**, Decisions → **Active/List**.
+(View tab → ⋯ → *Set as default* / drag tab.)
 
 ## 5. Gallery card covers (optional, looks great)
 - On the **Ventures** gallery: ⋯ → *Layout* → **Card preview: Page cover** → card size *Medium*.
@@ -38,6 +39,18 @@ Daily Log → **Calendar**, Decisions → **Active/List**. (View tab → ⋯ →
 ## 7. Tidy
 - On the **🧠 Memory OS** container page, drag the **Engine room** link to the bottom.
 - Swap any cover image (currently Notion gradients) for a personal one if you like.
+
+## 8. Weekly Goals — turn on the Monday repeat (optional)
+The API can't create a repeating template, so to auto-create each week's goal scaffold every Monday:
+- Open **Weekly Goals** → dropdown next to **New** → **+ New template** → design a goal row (e.g.
+  set Status = Open, leave Goal/Week Of blank) → **⋯ → Repeat → Weekly**, start on a **Monday**.
+- Each Monday Notion drops a fresh goal entry in; you fill in that week's goals. (Free plan supports
+  this.) Same trick works for a daily Tasks template if you want.
+
+## Daily / weekly rhythm (how to use it)
+- **Monday:** open **Weekly Goals → This week**, add this week's goals.
+- **Each morning:** in **Tasks**, set **Do Date = today** on what you'll tackle and tick **Top 3**
+  on your three must-dos. **Home** shows *⭐ Top 3 today* and *🎯 This week's goals* at a glance.
 
 That's it — after this pass it reads like a designed workspace, and nothing about the AI/data layer
 changed.

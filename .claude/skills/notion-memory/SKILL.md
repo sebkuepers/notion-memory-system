@@ -118,7 +118,8 @@ Decisions `https://app.notion.com/p/b568bd8c70534bfebc59f2b68352f0aa` · Knowled
 `https://app.notion.com/p/6f68dd722c074894bee05a92bbc18326` · Preferences
 `https://app.notion.com/p/d835dbdabaed4b5181669747462d6b43` · Inbox
 `https://app.notion.com/p/f8a50198abe04bb1bd93bb577bbd3602` · Tasks
-`https://app.notion.com/p/0dc2c16eb87b40f88f5a4d4536a6aa0c` · Ventures
+`https://app.notion.com/p/0dc2c16eb87b40f88f5a4d4536a6aa0c` · Weekly Goals
+`https://app.notion.com/p/4821907b0c24414f8b1358d719545f6a` · Ventures
 `https://app.notion.com/p/8feb6e4ef033431290d00d1751302816` · Agents
 `https://app.notion.com/p/828042582f574567b08dd107f4085b75` · Projects
 `https://app.notion.com/p/da4411a0f7aa422c95440cb96e25e7ba` · People
@@ -132,7 +133,10 @@ Decisions `https://app.notion.com/p/b568bd8c70534bfebc59f2b68352f0aa` · Knowled
 - **Strategy & Goals:** `Objective`(title) · `Horizon`[Now|Quarter|Year|Long-term] · `Status`[Active|Achieved|Dropped] · `Venture`(rel) · `Metric` · `Review Date` · `Added by`.
 - **Preferences:** `Preference`(title) · `Area`[Communication|Formatting|Tooling|Working Style|Boundaries|Values] · `Scope` · `Status`[Active|Retired] · `Added by`.
 - **Inbox:** `Note`(title) · `Captured` · `Processed`(checkbox) · `Guess Type`[Strategic|Relationship|Knowledge|Process|Decision].
-- **Tasks:** `Task`(title) · `Status`[Todo|Doing|Done|Dropped] · `Due` · `Priority`[High|Medium|Low] · `Project`(rel) · `Venture`(rel).
+- **Tasks:** `Task`(title) · `Status`[Todo|Doing|Done|Dropped] · `Do Date`(day you'll do it) · `Top 3`(checkbox — the daily top-3 mark) · `Due`(deadline) · `Priority`[High|Medium|Low] · `Project`(rel) · `Venture`(rel).
+- **Weekly Goals:** `Goal`(title) · `Week Of`(date = the Monday) · `Status`[Open|Achieved|Missed] · `Progress`(number) · `Venture`(rel) · `Added by`.
+
+**Planning visibility:** *this week's goals* = Weekly Goals where `Week Of` is **this week** · *today's Top 3* = Tasks where `Do Date` is **today** and `Top 3` is checked. Surface both at session start when relevant.
 
 **Setting a `Venture` (relation):** pass the venture's page URL. Ongiini
 `…04ba07e548f9843b1c` · Sokosumi `…91a11ec8e35c2aad6f` · Masumi `…abba3beef4e27801db` · CIF
