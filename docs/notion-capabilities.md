@@ -61,6 +61,13 @@ UI `place`/location type. **[VERIFIED for the core set]**
 - **REST `/v1/search` is title-only** (literally "Search by title") — it does **not** search page
   body/block content. **[VERIFIED]**
 
+**View-filter gotcha (learned the hard way):** the `create-view`/`update-view` DSL does **not**
+support Notion's relative date-*range* filters ("this week", etc.) — `FILTER "d" = "this week"` is
+treated as an exact literal date and matches nothing. Workaround: a **formula** column that returns
+`"yes"/"no"` (string, not boolean — the DSL filters formulas as *text*), filtered with
+`FILTER "Col" = "yes"`. Relative single-day `= "today"` is also unreliable; use the same formula
+trick. This auto-rolls without date math.
+
 > **The single most important consequence:** reliable AI recall depends on **titles + properties**.
 > So titles are written as **full statements**, and every high-value filter (`Type`, `Venture`,
 > `Scope`, `Status`) is a real **property**. Do not rely on body-text search or on views for recall.

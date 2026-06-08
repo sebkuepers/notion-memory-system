@@ -10,6 +10,10 @@ CREATE TABLE "Weekly Goals" (
     "Status"   SELECT('Open':blue, 'Achieved':green, 'Missed':red),
     "Progress" NUMBER,                               -- optional; format as percent in the UI
     "Venture"  RELATION('{{VENTURES_DS}}', DUAL 'Weekly Goals'),
-    "Added by" SELECT('Sebastian':blue, 'Claude':orange, 'ChatGPT':green, 'Mistral':purple, 'Agent':gray)
+    "Added by" SELECT('Sebastian':blue, 'Claude':orange, 'ChatGPT':green, 'Mistral':purple, 'Agent':gray),
+    -- The view DSL can't express Notion's relative date-range filter ("this week"), so we compute
+    -- it in a formula and filter on its STRING output (the DSL filters formulas as text, so it must
+    -- return "yes"/"no", not a boolean). Auto-rolls each week.
+    "This Week?" FORMULA('if(empty(prop("Week Of")), "no", if(and(dateBetween(now(), prop("Week Of"), "days") >= 0, dateBetween(now(), prop("Week Of"), "days") <= 6), "yes", "no"))')
 );
--- Key view: "This week" (Week Of is this week). LLMs read goals by querying Week Of = this week.
+-- Key view: "This week" = FILTER "This Week?" = "yes". LLMs query Week Of within the current week.

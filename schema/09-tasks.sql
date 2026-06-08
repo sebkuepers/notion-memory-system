@@ -10,6 +10,8 @@ CREATE TABLE "Tasks" (
     "Due"      DATE,                                 -- the deadline (distinct from Do Date)
     "Priority" SELECT('High':red, 'Medium':yellow, 'Low':gray),
     "Project"  RELATION('{{PROJECTS_DS}}', DUAL 'Tasks' 'tasks'),
-    "Venture"  RELATION('{{VENTURES_DS}}', DUAL 'Tasks' 'tasks')
+    "Venture"  RELATION('{{VENTURES_DS}}', DUAL 'Tasks' 'tasks'),
+    -- "yes"/"no" so a view can filter "today" (the DSL can't do a relative date filter; see Weekly Goals).
+    "Is Today?" FORMULA('if(empty(prop("Do Date")), "no", if(formatDate(prop("Do Date"), "YYYYMMDD") == formatDate(now(), "YYYYMMDD"), "yes", "no"))')
 );
--- Key views: "Today" (Do Date is today), "⭐ Top 3 today" (Do Date today AND Top 3 checked).
+-- Key views: "Today" = FILTER "Is Today?" = "yes"; "⭐ Top 3 today" = that AND Top 3 checked.
